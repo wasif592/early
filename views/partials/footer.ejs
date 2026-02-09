@@ -1,0 +1,18 @@
+<footer>
+        <p>&copy; <%= year %> <%= schoolName %>.<br> Directed by Principal <%= principal %></p>
+    </footer>
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.onclick = () => {
+            const isDark = document.body.getAttribute('data-theme') === 'dark';
+            document.body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            document.getElementById('theme-icon').textContent = isDark ? '🌙' : '☀️';
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in-section').forEach(s => observer.observe(s));
+    </script>
+</body>
+</html>
